@@ -7,14 +7,26 @@
 //
 
 #import "SDAppDelegate.h"
+#import "SNExt.h"
+#import "SNEval.h"
 
 @implementation SDAppDelegate
+
+- (void)loadScripts
+{
+    NSString *mainURL = [[NSBundle mainBundle] pathForResource:@"main" ofType:@"scm"];
+    NSString *mainString = [NSString stringWithContentsOfFile:mainURL encoding:NSUTF8StringEncoding error:nil];
+    SNParseResult *parseResult = [SNExt symbolicExpression]([SNExt stringToArray:mainString])[0];
+    NSMutableDictionary *env = [[SNEval prelude] mutableCopy];
+    [SNEval evaluate:[parseResult result] inContext:env];
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor whiteColor];
+
+    [self loadScripts];
+
     [self.window makeKeyAndVisible];
     return YES;
 }

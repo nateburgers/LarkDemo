@@ -19,6 +19,11 @@
 		43F00DB417EDE33700A165D3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43F00D9C17EDE33700A165D3 /* UIKit.framework */; };
 		43F00DBC17EDE33700A165D3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 43F00DBA17EDE33700A165D3 /* InfoPlist.strings */; };
 		43F00DBE17EDE33700A165D3 /* SnarkDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F00DBD17EDE33700A165D3 /* SnarkDemoTests.m */; };
+		43F00DCB17EDE39F00A165D3 /* SNEval.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F00DC817EDE39F00A165D3 /* SNEval.m */; };
+		43F00DCC17EDE39F00A165D3 /* SNExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F00DCA17EDE39F00A165D3 /* SNExt.m */; };
+		43F00DCF17EDE46F00A165D3 /* main.scm in Resources */ = {isa = PBXBuildFile; fileRef = 43F00DCE17EDE46F00A165D3 /* main.scm */; };
+		43F00DD117EDEB4C00A165D3 /* lambda.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 43F00DD017EDEB4C00A165D3 /* lambda.jpg */; };
+		43F00DD717EDF42A00A165D3 /* SDREPLServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F00DD617EDF42A00A165D3 /* SDREPLServer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +53,14 @@
 		43F00DB917EDE33700A165D3 /* SnarkDemoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SnarkDemoTests-Info.plist"; sourceTree = "<group>"; };
 		43F00DBB17EDE33700A165D3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		43F00DBD17EDE33700A165D3 /* SnarkDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SnarkDemoTests.m; sourceTree = "<group>"; };
+		43F00DC717EDE39F00A165D3 /* SNEval.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNEval.h; sourceTree = "<group>"; };
+		43F00DC817EDE39F00A165D3 /* SNEval.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNEval.m; sourceTree = "<group>"; };
+		43F00DC917EDE39F00A165D3 /* SNExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNExt.h; sourceTree = "<group>"; };
+		43F00DCA17EDE39F00A165D3 /* SNExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNExt.m; sourceTree = "<group>"; };
+		43F00DCE17EDE46F00A165D3 /* main.scm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = main.scm; path = Assets/main.scm; sourceTree = "<group>"; };
+		43F00DD017EDEB4C00A165D3 /* lambda.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = lambda.jpg; path = Assets/lambda.jpg; sourceTree = "<group>"; };
+		43F00DD517EDF42A00A165D3 /* SDREPLServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDREPLServer.h; sourceTree = "<group>"; };
+		43F00DD617EDF42A00A165D3 /* SDREPLServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDREPLServer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,10 +120,17 @@
 		43F00D9E17EDE33700A165D3 /* SnarkDemo */ = {
 			isa = PBXGroup;
 			children = (
+				43F00DCD17EDE44800A165D3 /* Assets */,
+				43F00DC717EDE39F00A165D3 /* SNEval.h */,
+				43F00DC817EDE39F00A165D3 /* SNEval.m */,
+				43F00DC917EDE39F00A165D3 /* SNExt.h */,
+				43F00DCA17EDE39F00A165D3 /* SNExt.m */,
 				43F00DA717EDE33700A165D3 /* SDAppDelegate.h */,
 				43F00DA817EDE33700A165D3 /* SDAppDelegate.m */,
 				43F00DAA17EDE33700A165D3 /* Images.xcassets */,
 				43F00D9F17EDE33700A165D3 /* Supporting Files */,
+				43F00DD517EDF42A00A165D3 /* SDREPLServer.h */,
+				43F00DD617EDF42A00A165D3 /* SDREPLServer.m */,
 			);
 			path = SnarkDemo;
 			sourceTree = "<group>";
@@ -142,6 +162,15 @@
 				43F00DBA17EDE33700A165D3 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		43F00DCD17EDE44800A165D3 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				43F00DD017EDEB4C00A165D3 /* lambda.jpg */,
+				43F00DCE17EDE46F00A165D3 /* main.scm */,
+			);
+			name = Assets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -220,7 +249,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43F00DCF17EDE46F00A165D3 /* main.scm in Resources */,
 				43F00DA317EDE33700A165D3 /* InfoPlist.strings in Resources */,
+				43F00DD117EDEB4C00A165D3 /* lambda.jpg in Resources */,
 				43F00DAB17EDE33700A165D3 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -240,6 +271,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43F00DD717EDF42A00A165D3 /* SDREPLServer.m in Sources */,
+				43F00DCC17EDE39F00A165D3 /* SNExt.m in Sources */,
+				43F00DCB17EDE39F00A165D3 /* SNEval.m in Sources */,
 				43F00DA517EDE33700A165D3 /* main.m in Sources */,
 				43F00DA917EDE33700A165D3 /* SDAppDelegate.m in Sources */,
 			);
