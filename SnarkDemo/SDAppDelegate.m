@@ -28,7 +28,6 @@
 
     [self loadScripts];
     [self setRepl:[[SDREPLServer alloc] init]];
-    [[self repl] writeString:@"this is some crazy ass shit"];
 
     [self.window makeKeyAndVisible];
     return YES;

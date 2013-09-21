@@ -241,10 +241,10 @@
 {
     return [self deconstruct:array withBlock:^id(SNSymbol *head, NSArray *arguments) {
 #ifdef DEBUG
-        NSParameterAssert([head isKindOfClass:[SNSymbol class]]);
+//        NSParameterAssert([head isKindOfClass:[SNSymbol class]]);
 #endif
         SNProcedure proc = [self evaluate:head inContext:context];
-        return [[self specialFormSymbols] containsObject:[head name]]
+        return [head isKindOfClass:[SNSymbol class]] && [[self specialFormSymbols] containsObject:[head name]]
         ? [self applySpecialForm:proc to:arguments inContext:context]
         : [self applyDerivedForm:proc to:arguments inContext:context]
         ;

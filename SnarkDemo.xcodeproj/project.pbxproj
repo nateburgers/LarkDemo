@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4347FF3117EE3F5300336BD2 /* SDCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4347FF3017EE3F5300336BD2 /* SDCircleView.m */; };
+		4347FF3517EE49AA00336BD2 /* SDFunView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4347FF3417EE49AA00336BD2 /* SDFunView.m */; };
+		4347FF3817EE4A7100336BD2 /* SDFunViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4347FF3717EE4A7100336BD2 /* SDFunViewController.m */; };
 		43F00D9917EDE33700A165D3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43F00D9817EDE33600A165D3 /* Foundation.framework */; };
 		43F00D9B17EDE33700A165D3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43F00D9A17EDE33700A165D3 /* CoreGraphics.framework */; };
 		43F00D9D17EDE33700A165D3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43F00D9C17EDE33700A165D3 /* UIKit.framework */; };
@@ -37,6 +40,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4347FF2F17EE3F5300336BD2 /* SDCircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDCircleView.h; path = Views/SDCircleView.h; sourceTree = "<group>"; };
+		4347FF3017EE3F5300336BD2 /* SDCircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDCircleView.m; path = Views/SDCircleView.m; sourceTree = "<group>"; };
+		4347FF3317EE49AA00336BD2 /* SDFunView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDFunView.h; sourceTree = "<group>"; };
+		4347FF3417EE49AA00336BD2 /* SDFunView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDFunView.m; sourceTree = "<group>"; };
+		4347FF3617EE4A7100336BD2 /* SDFunViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDFunViewController.h; sourceTree = "<group>"; };
+		4347FF3717EE4A7100336BD2 /* SDFunViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDFunViewController.m; sourceTree = "<group>"; };
 		43F00D9517EDE33600A165D3 /* SnarkDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnarkDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43F00D9817EDE33600A165D3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		43F00D9A17EDE33700A165D3 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -87,6 +96,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4347FF3217EE497B00336BD2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4347FF2F17EE3F5300336BD2 /* SDCircleView.h */,
+				4347FF3017EE3F5300336BD2 /* SDCircleView.m */,
+				4347FF3317EE49AA00336BD2 /* SDFunView.h */,
+				4347FF3417EE49AA00336BD2 /* SDFunView.m */,
+				4347FF3617EE4A7100336BD2 /* SDFunViewController.h */,
+				4347FF3717EE4A7100336BD2 /* SDFunViewController.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		43F00D8C17EDE33600A165D3 = {
 			isa = PBXGroup;
 			children = (
@@ -120,6 +142,7 @@
 		43F00D9E17EDE33700A165D3 /* SnarkDemo */ = {
 			isa = PBXGroup;
 			children = (
+				4347FF3217EE497B00336BD2 /* Views */,
 				43F00DCD17EDE44800A165D3 /* Assets */,
 				43F00DC717EDE39F00A165D3 /* SNEval.h */,
 				43F00DC817EDE39F00A165D3 /* SNEval.m */,
@@ -271,11 +294,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4347FF3517EE49AA00336BD2 /* SDFunView.m in Sources */,
 				43F00DD717EDF42A00A165D3 /* SDREPLServer.m in Sources */,
+				4347FF3117EE3F5300336BD2 /* SDCircleView.m in Sources */,
 				43F00DCC17EDE39F00A165D3 /* SNExt.m in Sources */,
 				43F00DCB17EDE39F00A165D3 /* SNEval.m in Sources */,
 				43F00DA517EDE33700A165D3 /* main.m in Sources */,
 				43F00DA917EDE33700A165D3 /* SDAppDelegate.m in Sources */,
+				4347FF3817EE4A7100336BD2 /* SDFunViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -472,6 +498,7 @@
 				43F00DC317EDE33700A165D3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		43F00DC417EDE33700A165D3 /* Build configuration list for PBXNativeTarget "SnarkDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -480,6 +507,7 @@
 				43F00DC617EDE33700A165D3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

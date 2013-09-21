@@ -76,10 +76,12 @@ typedef id (^ConcatenateBlock)(id x, id y);
 + (ParserCombinator) decimal;
 + (ParserCombinator) string;
 #pragma mark - Built In Grammars
++ (ParserCombinator) surround:(ParserCombinator)f with:(ParserCombinator)g and:(ParserCombinator)h;
 + (ParserCombinator) symbolicExpression;
 #pragma mark - Constructors
 + (SNSymbol *(^)(NSArray *))constructSymbol;
 + (NSNumber *(^)(NSArray *))constructInteger;
 + (NSNumber *(^)(NSArray *))constructNumber;
 + (NSString *(^)(NSArray *))constructString;
++ (NSArray *(^)(NSArray *))constructMessageSend;
 @end

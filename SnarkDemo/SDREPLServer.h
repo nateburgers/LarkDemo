@@ -12,7 +12,10 @@
 
 @property (readonly) NSInputStream *inputStream;
 @property (readonly) NSOutputStream *outputStream;
+@property (readonly) NSMutableDictionary *environment;
+@property NSMutableString *stringBuffer;
 
 - (void) writeString:(NSString *)string;
+- (id) evaluateString:(NSString *)string;
 
 @end

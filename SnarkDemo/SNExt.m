@@ -296,23 +296,46 @@
                     use:[self use:[self many:[self anychar]]
                            ignore:[self quote]]];
 }
++ (ParserCombinator)surround:(ParserCombinator)f with:(ParserCombinator)g and:(ParserCombinator)h
+{
+    return [self ignore:[self use:g
+                        ignoreAny:[self whitespace]]
+                    use:[self use:[self or:@[[self parse:f
+                                                   using:[self wrap]],
+                                             [self separate:f
+                                                         by:[self whitespace]]]]
+                           ignore:[self ignoreAny:[self whitespace]
+                                              use:h]]];
+}
 #pragma mark - Built In Grammars
 + (ParserCombinator)symbolicExpression
 
 {
     return ^(NSArray *sequence){
+//        return [self or:@[[self parse:[self identifier] using:[self constructSymbol]],
+//                          [self parse:[self integer] using:[self constructInteger]],
+//                          [self parse:[self decimal] using:[self constructNumber]],
+//                          [self parse:[self string] using:[self constructString]],
+//                          [self ignore:[self use:[self character:'(']
+//                                       ignoreAny:[self whitespace]]
+//                                   use:[self use:[self or:@[[self parse:[self symbolicExpression]
+//                                                                  using:[self wrap]],
+//                                                            [self separate:[self symbolicExpression]
+//                                                                        by:[self whitespace]]]]
+//                                          ignore:[self ignoreAny:[self whitespace]
+//             e                                                use:[self character:')']]]]]](sequence);
         return [self or:@[[self parse:[self identifier] using:[self constructSymbol]],
                           [self parse:[self integer] using:[self constructInteger]],
                           [self parse:[self decimal] using:[self constructNumber]],
                           [self parse:[self string] using:[self constructString]],
-                          [self ignore:[self use:[self character:'(']
-                                       ignoreAny:[self whitespace]]
-                                   use:[self use:[self or:@[[self parse:[self symbolicExpression]
-                                                                  using:[self wrap]],
-                                                            [self separate:[self symbolicExpression]
-                                                                        by:[self whitespace]]]]
-                                          ignore:[self ignoreAny:[self whitespace]
-                                                             use:[self character:')']]]]]](sequence);
+                          [self surround:[self symbolicExpression]
+                                    with:[self character:'(']
+                                     and:[self character:')']],
+                          [self parse:[self surround:[self symbolicExpression]
+                                                with:[self character:'[']
+                                                 and:[self character:']']]
+                                using:[self constructMessageSend]]]](sequence);
+        
     };
 }
 #pragma mark - Constructors
@@ -339,6 +362,24 @@
 {
     return ^(NSArray *sequence){
         return (NSString *)[self reStringify:sequence];
+    };
+}
++ (NSArray *(^)(NSArray *))constructMessageSend
+{
+    return ^(NSArray *sequence){
+        NSArray *fixed = [self reStringify:sequence];
+        id object = fixed[0];
+        NSMutableString *message = [NSMutableString string];
+        NSMutableArray *arguments = [NSMutableArray array];
+        for (NSUInteger i=1; i<[fixed count]; i++) {
+            if (i % 2 == 0) {
+                [arguments addObject:fixed[i]];
+            } else {
+                [message appendString:[fixed[i] name]];
+            }
+        }
+        NSArray *result = [@[[SNSymbol symbolWithName:@"@"], object, [SNSymbol symbolWithName:message]] arrayByAddingObjectsFromArray:arguments];
+        return result;
     };
 }
 @end
