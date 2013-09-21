@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@class SDREPLServer;
 @interface SDAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property SDREPLServer *repl;
 
 - (void) loadScripts;
 

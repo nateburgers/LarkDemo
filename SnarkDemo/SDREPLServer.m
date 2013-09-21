@@ -45,10 +45,13 @@
     if (aStream == [self inputStream]) {
         switch (eventCode) {
             case NSStreamEventEndEncountered:
+                NSLog(@"eof");
                 break;
             case NSStreamEventErrorOccurred:
+                NSLog(@"error");
                 break;
             case NSStreamEventHasBytesAvailable:
+                NSLog(@"bytes available");
                 break;
             case NSStreamEventHasSpaceAvailable:
                 break;

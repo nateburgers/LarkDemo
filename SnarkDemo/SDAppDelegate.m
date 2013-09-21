@@ -7,6 +7,7 @@
 //
 
 #import "SDAppDelegate.h"
+#import "SDREPLServer.h"
 #import "SNExt.h"
 #import "SNEval.h"
 
@@ -26,6 +27,8 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
     [self loadScripts];
+    [self setRepl:[[SDREPLServer alloc] init]];
+    [[self repl] writeString:@"this is some crazy ass shit"];
 
     [self.window makeKeyAndVisible];
     return YES;
