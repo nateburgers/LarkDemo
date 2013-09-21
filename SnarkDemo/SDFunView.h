@@ -8,6 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@class SDCircle;
 @interface SDFunView : UIView
+
+@property NSMutableArray *circles;
+@property UIColor *color;
+
+- (SDCircle *)addCircle;
+- (SDCircle *)anyCircle;
+
+- (void)update;
 
 @end

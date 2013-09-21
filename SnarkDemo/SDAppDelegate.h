@@ -9,10 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @class SDREPLServer;
+@class SDFunViewController;
 @interface SDAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 @property SDREPLServer *repl;
+@property SDFunViewController *viewController;
 
 - (void) loadScripts;
 

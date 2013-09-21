@@ -10,6 +10,8 @@
 #import "SDREPLServer.h"
 #import "SNExt.h"
 #import "SNEval.h"
+#import "SDFunViewController.h"
+#import "SDFunView.h"
 
 @implementation SDAppDelegate
 
@@ -26,9 +28,13 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
-    [self loadScripts];
+//    [self loadScripts];
+    [self setViewController:[[SDFunViewController alloc] init]];
+    [self.window setRootViewController:[self viewController]];
+    [[self viewController] start];
+    
     [self setRepl:[[SDREPLServer alloc] init]];
-
+    
     [self.window makeKeyAndVisible];
     return YES;
 }
