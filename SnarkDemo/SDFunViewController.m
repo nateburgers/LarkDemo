@@ -79,9 +79,10 @@
 
 - (void)update
 {
-    @synchronized([[self funView] circles]) {
-        [[self funView] update];
-    }
+    [[self funView] update];
+//    @synchronized([[self funView] circles]) {
+//        [[self funView] update];
+//    }
 }
 
 @end

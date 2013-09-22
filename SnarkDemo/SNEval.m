@@ -187,12 +187,33 @@
                  NSString *selectorName = [xs[1] name];
                  SEL selector = NSSelectorFromString(selectorName);
                  NSUInteger nargs = [self argumentsInSelectorName:selectorName];
-                 switch (nargs) {
-                     case 0: return [object performSelector:selector];
-                     case 1: return [object performSelector:selector withObject:xs[2]];
-                     case 2: return [object performSelector:selector withObject:xs[2] withObject:xs[3]];
-                     default: @throw([NSException exceptionWithName:@"ArityException" reason:@"Too many arguments supplied to selector" userInfo:nil]);
+
+                 NSMethodSignature *sig = [object methodSignatureForSelector:selector];
+                 NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:sig];
+                 [invocation setTarget:object];
+                 [invocation setSelector:selector];
+                 for (NSUInteger i=0; i<nargs; i++) {
+                     id prop = xs[i+2];
+                     [invocation setArgument:&prop atIndex:i+2];
                  }
+                 [invocation retainArguments];
+                 [invocation invoke];
+                 CFTypeRef result;
+                 [invocation getReturnValue:&result];
+                 if (result) {
+                     CFRetain(result);
+                     return (__bridge_transfer id)result;
+                 } else {
+                     return nil;
+                 }
+
+                 // not using NSInvocation
+//                 switch (nargs) {
+//                     case 0: return [object performSelector:selector];
+//                     case 1: return [object performSelector:selector withObject:xs[2]];
+//                     case 2: return [object performSelector:selector withObject:xs[2] withObject:xs[3]];
+//                     default: @throw([NSException exceptionWithName:@"ArityException" reason:@"Too many arguments supplied to selector" userInfo:nil]);
+//                 }
              }],
              
 #pragma mark - Operators

@@ -8,6 +8,12 @@
 
 #import "SDCircle.h"
 
+@interface SDCircle ()
+{
+    UIColor *_color;
+}
+@end
+
 @implementation SDCircle
 
 - (id)init
@@ -21,6 +27,19 @@
         _dy = @(((NSInteger)(arc4random() % 200) - 100) / 100.f);
     }
     return self;
+}
+
+- (UIColor *)color
+{
+    return _color;
+}
+
+- (UIColor *)setColor:(UIColor *)color
+{
+//    @synchronized(self){
+        _color = color;
+        return _color;
+//    }
 }
 
 @end

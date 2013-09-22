@@ -51,7 +51,12 @@
 {
     NSArray *results = [SNExt symbolicExpression]([SNExt stringToArray:string]);
     SNParseResult *parseResult = [results lastObject]; // more likely to have the string form we want
-    return [SNEval evaluate:[parseResult result] inContext:[self environment]];
+    @try {
+        return [SNEval evaluate:[parseResult result] inContext:[self environment]];
+    }
+    @catch (NSException *exception) {
+        return exception;
+    }
 }
 
 - (void)stream:(NSStream *)aStream handleEvent:(NSStreamEvent)eventCode

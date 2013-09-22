@@ -312,18 +312,6 @@
 
 {
     return ^(NSArray *sequence){
-//        return [self or:@[[self parse:[self identifier] using:[self constructSymbol]],
-//                          [self parse:[self integer] using:[self constructInteger]],
-//                          [self parse:[self decimal] using:[self constructNumber]],
-//                          [self parse:[self string] using:[self constructString]],
-//                          [self ignore:[self use:[self character:'(']
-//                                       ignoreAny:[self whitespace]]
-//                                   use:[self use:[self or:@[[self parse:[self symbolicExpression]
-//                                                                  using:[self wrap]],
-//                                                            [self separate:[self symbolicExpression]
-//                                                                        by:[self whitespace]]]]
-//                                          ignore:[self ignoreAny:[self whitespace]
-//             e                                                use:[self character:')']]]]]](sequence);
         return [self or:@[[self parse:[self identifier] using:[self constructSymbol]],
                           [self parse:[self integer] using:[self constructInteger]],
                           [self parse:[self decimal] using:[self constructNumber]],
