@@ -38,7 +38,8 @@
 //    double delayInSeconds = 1.0;
 //    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
 //    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        [[self repl] evaluateString:@"(define vc [[[UIApplication sharedApplication] delegate] viewController])"];
+    [[self repl] evaluateString:@"(define viewController [[[UIApplication sharedApplication] delegate] viewController])"];
+    [[self repl] evaluateString:@"[[UIApplication sharedApplication] delegate] window] setBackgroundColor: [UIColor yellowColor]]"];
 //    });
 
     

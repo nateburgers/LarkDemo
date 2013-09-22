@@ -10,6 +10,8 @@
 		4347FF3517EE49AA00336BD2 /* SDFunView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4347FF3417EE49AA00336BD2 /* SDFunView.m */; };
 		4347FF3817EE4A7100336BD2 /* SDFunViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4347FF3717EE4A7100336BD2 /* SDFunViewController.m */; };
 		4347FF3B17EE52C500336BD2 /* SDCircle.m in Sources */ = {isa = PBXBuildFile; fileRef = 4347FF3A17EE52C500336BD2 /* SDCircle.m */; };
+		4347FF3E17EE902700336BD2 /* SDRect.m in Sources */ = {isa = PBXBuildFile; fileRef = 4347FF3D17EE902700336BD2 /* SDRect.m */; };
+		4347FF4417EE934100336BD2 /* SDLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4347FF4317EE934100336BD2 /* SDLabel.m */; };
 		43F00D9917EDE33700A165D3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43F00D9817EDE33600A165D3 /* Foundation.framework */; };
 		43F00D9B17EDE33700A165D3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43F00D9A17EDE33700A165D3 /* CoreGraphics.framework */; };
 		43F00D9D17EDE33700A165D3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43F00D9C17EDE33700A165D3 /* UIKit.framework */; };
@@ -46,6 +48,10 @@
 		4347FF3717EE4A7100336BD2 /* SDFunViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDFunViewController.m; sourceTree = "<group>"; };
 		4347FF3917EE52C500336BD2 /* SDCircle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDCircle.h; sourceTree = "<group>"; };
 		4347FF3A17EE52C500336BD2 /* SDCircle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDCircle.m; sourceTree = "<group>"; };
+		4347FF3C17EE902700336BD2 /* SDRect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDRect.h; sourceTree = "<group>"; };
+		4347FF3D17EE902700336BD2 /* SDRect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDRect.m; sourceTree = "<group>"; };
+		4347FF4217EE934100336BD2 /* SDLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDLabel.h; sourceTree = "<group>"; };
+		4347FF4317EE934100336BD2 /* SDLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDLabel.m; sourceTree = "<group>"; };
 		43F00D9517EDE33600A165D3 /* SnarkDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnarkDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43F00D9817EDE33600A165D3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		43F00D9A17EDE33700A165D3 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -103,6 +109,8 @@
 				4347FF3417EE49AA00336BD2 /* SDFunView.m */,
 				4347FF3617EE4A7100336BD2 /* SDFunViewController.h */,
 				4347FF3717EE4A7100336BD2 /* SDFunViewController.m */,
+				4347FF4217EE934100336BD2 /* SDLabel.h */,
+				4347FF4317EE934100336BD2 /* SDLabel.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -154,6 +162,8 @@
 				43F00DD617EDF42A00A165D3 /* SDREPLServer.m */,
 				4347FF3917EE52C500336BD2 /* SDCircle.h */,
 				4347FF3A17EE52C500336BD2 /* SDCircle.m */,
+				4347FF3C17EE902700336BD2 /* SDRect.h */,
+				4347FF3D17EE902700336BD2 /* SDRect.m */,
 			);
 			path = SnarkDemo;
 			sourceTree = "<group>";
@@ -300,6 +310,8 @@
 				43F00DCB17EDE39F00A165D3 /* SNEval.m in Sources */,
 				43F00DA517EDE33700A165D3 /* main.m in Sources */,
 				43F00DA917EDE33700A165D3 /* SDAppDelegate.m in Sources */,
+				4347FF3E17EE902700336BD2 /* SDRect.m in Sources */,
+				4347FF4417EE934100336BD2 /* SDLabel.m in Sources */,
 				4347FF3817EE4A7100336BD2 /* SDFunViewController.m in Sources */,
 				4347FF3B17EE52C500336BD2 /* SDCircle.m in Sources */,
 			);

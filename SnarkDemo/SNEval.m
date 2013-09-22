@@ -72,8 +72,50 @@
         Class newclass = objc_allocateClassPair(superclass, [[classSymbol name] UTF8String], 0);
         for (NSUInteger i=2; i<[args count]; i++) {
             NSArray *nameValuePair = args[i];
-            class_addIvar(newclass, [[nameValuePair[0] name] UTF8String], sizeof(id),
-                          rint(log2(sizeof(id))), @encode(id));
+            
+//            SNSymbol *name = [self evaluate:nameValuePair[0] inContext:env];
+            SNSymbol *name = nameValuePair[0];
+            id value = [self evaluate:nameValuePair[1] inContext:env];
+            
+            if (class_isMetaClass(object_getClass(value))) {
+                // it's a class
+                Class ivarClass = object_getClass(value);
+                class_addIvar(newclass, [[name name] UTF8String], sizeof(ivarClass), rint(log2(sizeof(ivarClass))), @encode(id));
+                NSString *capSet = [[name name] stringByReplacingCharactersInRange:NSMakeRange(0, 1) withString:[[[name name] substringToIndex:1] capitalizedString]];
+                NSString *setName = [NSString stringWithFormat:@"set%@:", capSet];
+                
+                Ivar ivar = class_getInstanceVariable(newclass, [[name name] UTF8String]);
+                IMP getImp = imp_implementationWithBlock(^(id self){
+                    id x = object_getIvar(self, ivar);
+                    return x;
+                });
+                class_addMethod(newclass, NSSelectorFromString([name name]), getImp, [@"@@:v" UTF8String]);
+                
+                IMP setImp = imp_implementationWithBlock(^(id self, id value){
+                    object_setIvar(self, ivar, value);
+                    return value;
+                });
+                class_addMethod(newclass, NSSelectorFromString(setName), setImp, [@"@@:@" UTF8String]);
+            } else {
+                // it's a block
+                IMP lambdaImp = imp_implementationWithBlock(^id(id self, id x){
+                    SNProcedure block = value;
+                    NSMutableDictionary *newEnv = [env mutableCopy];
+                    [newEnv setObject:self forKey:@"self"];
+                    return block(newEnv, @[x]);
+                });
+                // get arg count for the lambda
+                NSString *idSig = [NSString stringWithUTF8String:@encode(id)];
+                NSUInteger argc = [nameValuePair[1][1] count];
+                NSString *args = [@"" stringByPaddingToLength:argc withString:idSig startingAtIndex:0];
+                NSString *type = [NSString stringWithFormat:@"@@:%@", args];
+                BOOL success = class_addMethod(newclass, NSSelectorFromString([name name]), lambdaImp, [type UTF8String]);
+                if (!success) {
+                    NSLog(@"oh no!");
+                }
+            }
+//            class_addIvar(newclass, [[nameValuePair[0] name] UTF8String], sizeof(id),
+//                          rint(log2(sizeof(id))), @encode(id));
         }
         objc_registerClassPair(newclass);
         return newclass;
@@ -189,6 +231,10 @@
                  NSUInteger nargs = [self argumentsInSelectorName:selectorName];
 
                  NSMethodSignature *sig = [object methodSignatureForSelector:selector];
+                 if (![object respondsToSelector:selector]) {
+                     NSString *reason = [NSString stringWithFormat:@"%@ does not respond to %@", object, selectorName];
+                     @throw [NSException exceptionWithName:@"LARKException" reason:reason userInfo:nil];
+                 }
                  NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:sig];
                  [invocation setTarget:object];
                  [invocation setSelector:selector];
@@ -198,22 +244,14 @@
                  }
                  [invocation retainArguments];
                  [invocation invoke];
-                 CFTypeRef result;
-                 [invocation getReturnValue:&result];
-                 if (result) {
+                 if ([sig methodReturnLength] == 0) {
+                     return nil;
+                 } else {
+                     CFTypeRef result;
+                     [invocation getReturnValue:&result];
                      CFRetain(result);
                      return (__bridge_transfer id)result;
-                 } else {
-                     return nil;
                  }
-
-                 // not using NSInvocation
-//                 switch (nargs) {
-//                     case 0: return [object performSelector:selector];
-//                     case 1: return [object performSelector:selector withObject:xs[2]];
-//                     case 2: return [object performSelector:selector withObject:xs[2] withObject:xs[3]];
-//                     default: @throw([NSException exceptionWithName:@"ArityException" reason:@"Too many arguments supplied to selector" userInfo:nil]);
-//                 }
              }],
              
 #pragma mark - Operators
