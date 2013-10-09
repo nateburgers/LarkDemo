@@ -1,9 +1,9 @@
-SnarkDemo (Now "Lark")
+Lark Demo (was "Snark Demo")
 =========
 
 Demo of Prototyping langauge Lark
 
-Please excuse the title and lack of documentation. The name of Lark was originally Snark, and due to the rush of MHacks
+Please excuse the title change and lack of documentation. The name of Lark was originally Snark, and due to the rush of MHacks
 I did not have the time to rename everything in the repository.
 
 #Neat Files to Check Out:
